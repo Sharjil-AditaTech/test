@@ -1,0 +1,55 @@
+[
+    {
+      "country": "India",
+      "states": [
+        {
+          "name": "UP",
+          "city": [
+            {
+              "name": "noida",
+              "code": "DL"
+            },
+            {
+              "name": "banaras",
+              "code": "BNRS"
+            },
+            {
+              "name": "Kanpur",
+              "code": "KNP"
+            }
+          ]
+        },
+        {
+          "name": "UTTRAKHAND",
+          "city": [
+            {
+              "name": "Haldwani",
+              "code": "HLD"
+            },
+            {
+              "name": "Nainital",
+              "code": "NTL"
+            },
+            {
+              "name": "Ruderpur",
+              "code": "RDPR"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "country": "USA",
+      "states": [
+        {
+          "name": "Airizon",
+          "city": [
+            {
+              "name": "Delphia",
+              "code": "DPA"
+            }
+          ]
+        }
+      ]
+    }
+  ]

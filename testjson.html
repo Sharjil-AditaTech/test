@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <style>
+    	p, select {font: 18px Calibri;}
+    </style>
+</head>
+<body>
+	<h2>
+    	Select country state city
+    </h2>
+    <p>
+        Country: <select id='sel'>
+            <option value=''>-- Select --</option>
+        </select>
+    </p>
+    
+    <p>
+        State: <select id='sel1'>
+            <option value=''>-- Select --</option>
+        </select>
+    </p>
+
+    <p>
+        City: <select id='sel2'>
+            <option value=''>-- Select --</option>
+        </select>
+    </p>
+
+</body>
+
+<script>
+    $(document).ready(function () {
+
+    let arrData = [];
+    
+  	// Fill the first dropdown with data.
+    $.getJSON('/home/adita/Desktop/MyProjects/Content_Builder/Main/static/data/location.json', function (data) {
+
+    
+        let country = [];
+
+        $.each(data, function (index, value) {
+            country.push(value.Type);
+            arrData = data;
+        });
+
+        // Unique country.
+        country = Array.from(new Set (country));
+        
+         
+        $.each(country, function (index, value) {
+            // populate dropdown with unique country.
+            $('#sel').append('<option value="' + value + '">' + value + '</option>');
+        });
+                
+    });
+    
+    $('#sel').change(function () {
+        let type = this.options[this.selectedIndex].value;
+
+        let filterData = arrData.filter(function(value) {
+            return value.Type === type;
+        });
+
+        $('#sel1')
+            .empty()
+            .append('<option value=""> -- Select State -- </option>');
+
+        $.each(filterData, function (index, value) {
+            // Now, fill the second dropdown list with state.
+            $('#sel1').append('<option value="' + value.ID + '">' + value.Name + '</option>');
+        }); 
+        
+    });
+
+    $('#sel1').change(function () {
+        let type = this.options[this.selectedIndex].value;
+
+        let filterData = arrData.filter(function(value) {
+            return value.Type === type;
+        });
+
+        $('#sel2')
+            .empty()
+            .append('<option value=""> -- Select City -- </option>');
+
+        $.each(filterData, function (index, value) {
+            // Now, fill the second dropdown list with city
+            $('#sel2').append('<option value="' + value.ID + '">' + value.Name + '</option>');
+        }); 
+        
+    });
+
+  });
+
+
+</script>
+</html>
